@@ -1,6 +1,6 @@
 const { faker } = require("@faker-js/faker");
 const { nanoid } = require("nanoid");
-// const flowers = require("../data/flowers.json");
+import chalk from 'chalk'; // ??? what is wrongggggg
 
 const inform = console.log
 
@@ -23,12 +23,35 @@ function show(flowers, flowerId) {
   const flower = flowers.find((flower) => flower.id === flowerId);
   return flower.name + " " + flower.id;
 }
+function update(flowers, flowerId, updatedFlower) {
+  const index = flowers.findIndex((flower) => flower.id === flowerId);
+  if (index > -1) {
+    flowers[index].id = flowerId;
+    flowers[index].name = updatedFlower;
+    inform(chalk.green('Flower successfully updated!'));
+    return flowers;
+  } else {
+    inform(chalk.red('Sorry! Flower cannot be found.'));
+    return flowers;
+  }
+}
+function destroy(flowers, flowerId) {
+  const index = flowers.findIndex((flower) => flower.id === flowerId);
+  if (index > -1) {
+    flowers.splice(index, 1);
+    inform(chalk.yellow('Flower successfully removed from collection.'));
+    return flowers;
+  } else {
+    inform(chalk.red('Sorry! Flower cannot be found.'));
+    return flowers;
+  }
+}
 function addToCart(flowers, flowerId, addCart) {
   const flower = flowers.find((flower) => flower.id === flowerId);
   if (flower) {
-  addCart.push(flower) 
+    addCart.push(flower) 
   } else {
-    inform ("Sorry! This flower cannot be found.")
+    inform (chalk.red("Sorry! This flower cannot be found."))
   }
   return addCart
 }
@@ -36,18 +59,27 @@ function totalCart(cart) {
   let sumCart = cart.reduce((sum, flower) => sum + flower.priceInCents, 0);
   sumCart = sumCart/100
   return `$` + sumCart.toFixed(2) 
-
-  // then, convert to $$$
 }
-//
-// function deleteFromCart
-// make function that takes from the flower arr (show .find() but you have to push the flower INTO the cart. Create third arg for the cart. )
+function deleteFromCart(cart, flowerId) {
+  const index = cart.findIndex((flower) => flower.id === flowerId);
+  if (index > -1) {
+    cart.splice(index, 1);
+    inform(chalk.cyan('Flower successfully removed from cart.'));
+    return cart;
+  } else {
+    inform(chalk.red('Sorry! Flower cannot be found.'));
+    return cart;
+  }
+}
+
+
 module.exports = {
   create,
   index,
   show,
+  update,
+  destroy,
   addToCart,
   totalCart,
-//   destroy, 
-//   update
+  deleteFromCart
 };

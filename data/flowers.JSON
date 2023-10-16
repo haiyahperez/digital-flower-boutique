@@ -24,29 +24,20 @@
     "inStock": 52
   },
   {
-    "name": "Tulips",
+    "name": "Tulip",
     "id": "fenwP",
     "origin": "Holland",
     "color": [
-      "Red",
-      "Yellow",
-      "Pink"
+      "Orange"
     ],
     "priceInCents": 3000,
     "inStock": 46
   },
   {
-    "name": "Lily",
+    "name": "Orchid",
     "id": "LEXWO",
     "color": "lavender",
     "priceInCents": 2386,
     "inStock": 65
-  },
-  {
-    "name": "Daisy",
-    "id": "1z9Tu",
-    "color": "plum",
-    "priceInCents": 3441,
-    "inStock": 27
   }
 ]

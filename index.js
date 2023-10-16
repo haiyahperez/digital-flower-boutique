@@ -1,6 +1,6 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
 
-const { create, index, show, addToCart, destroy, update, totalCart} = require("./src/flowerController");
+const { create, index, show, destroy, update, addToCart, deleteFromCart, totalCart} = require("./src/flowerController");
 
 const flowers = readJSONFile("./data", "flowers.json");
 const cart = readJSONFile("./data", "customerCart.json")
@@ -10,6 +10,7 @@ const inform = console.log;
 function run() {
   const action = process.argv[2];
   const flower = process.argv[3];
+
 
   let writeToFile = false;
   let writeToFileCart = false;
@@ -36,6 +37,10 @@ function run() {
     case "totalCart":
       inform(totalCart(cart));
       break;
+    case "deleteFromCart":
+      updatedCart = deleteFromCart(cart, flower); 
+      writeToFileCart = true 
+      break;
     case "update":
       updatedFlowers = update(flowers, flower, process.argv[4]);
       writeToFile = true;
@@ -44,6 +49,9 @@ function run() {
       updatedFlowers = destroy(flowers, flower);
       writeToFile = true;
       break;
+    case "cancel": // "cancel" works without the function because of the switch statment where in any case "cancel" is used, it returns an empty array being "updatedCart" writeToFileCart = true;
+      break;
+
     default:
       inform("There was an error.");
   }
