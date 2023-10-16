@@ -1,0 +1,35 @@
+[
+    {
+        "name": "Rose", 
+        "id": "sleNd",
+        "origin": "China",
+        "color": "Red",
+        "priceInCents": 2500,
+        "inStock": 54
+    },
+    {
+        "name": "Lavender", 
+        "id": "dNwiO",
+        "origin": "France",
+        "color": "Purple",
+        "priceInCents": 1700,
+        "inStock": 78
+    },
+    {
+        "name": "Sunflower", 
+        "id": "nebUw",
+        "origin": "Sun",
+        "color": "Yellow",
+        "priceInCents": 4500,
+        "inStock": 52
+    },
+    {
+        "name": "Tulips", 
+        "id": "fenwP",
+        "origin": "Holland",
+        "color": ["Red", "Yellow", "Pink"],
+        "priceInCents": 3000,
+        "inStock": 46
+    }
+]
+
