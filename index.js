@@ -1,8 +1,9 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
 
-const { create, index, show, destroy, update} = require("./src/flowerController");
+const { create, index, show, addToCart, destroy, update} = require("./src/flowerController");
 
 const flowers = readJSONFile("./data", "flowers.json");
+const cart = readJSONFile("./data", "customerCart.json")
 
 const inform = console.log;
 
@@ -11,7 +12,9 @@ function run() {
   const flower = process.argv[3];
 
   let writeToFile = false;
-  let Cart = [];
+  let writeToFileCart = false;
+  let updatedFlowers = [];
+  let updatedCart = []; 
 
   switch (action) {
     case "index":
@@ -19,19 +22,23 @@ function run() {
       inform(flowersView);
       break;
     case "create":
-      updatedCart = create(flowers, flower); //flowers is the array, flower is the flower that is being added.
+      updatedFlowers = create(flowers, flower); //flowers is the array, flower is the flower that is being added.
       writeToFile = true;
       break;
     case "show":
       const flowerView = show(flowers, flower);  
-      inform(flowersView);
+      inform(flowerView);
       break;
+    case "addToCart":
+      updatedCart = addToCart(flowers, flower, cart);
+      writeToFileCart = true
+      break; 
     case "update":
-      updatedCart = update(flowers, flower, process.argv[4]);
+      updatedFlowers = update(flowers, flower, process.argv[4]);
       writeToFile = true;
       break;
     case "destroy":
-      updatedCart = destroy(flowers, flower);
+      updatedFlowers = destroy(flowers, flower);
       writeToFile = true;
       break;
     default:
@@ -39,6 +46,9 @@ function run() {
   }
 
   if (writeToFile) {
+    writeJSONFile("./data", "flowers.json", updatedFlowers);
+  }
+  if (writeToFileCart) {
     writeJSONFile("./data", "customerCart.json", updatedCart);
   }
 }
