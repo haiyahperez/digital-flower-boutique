@@ -32,9 +32,13 @@ function addToCart(flowers, flowerId, addCart) {
   }
   return addCart
 }
+function totalCart(cart) {
+  let sumCart = cart.reduce((sum, flower) => sum + flower.priceInCents, 0);
+  sumCart = sumCart/100
+  return `$` + sumCart.toFixed(2) 
 
-// function totalCart(cart) {
-//   let sum = 
+  // then, convert to $$$
+}
 //
 // function deleteFromCart
 // make function that takes from the flower arr (show .find() but you have to push the flower INTO the cart. Create third arg for the cart. )
@@ -43,6 +47,7 @@ module.exports = {
   index,
   show,
   addToCart,
+  totalCart,
 //   destroy, 
 //   update
 };

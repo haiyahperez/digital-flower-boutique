@@ -1,6 +1,6 @@
 const { readJSONFile, writeJSONFile } = require("./src/helpers");
 
-const { create, index, show, addToCart, destroy, update} = require("./src/flowerController");
+const { create, index, show, addToCart, destroy, update, totalCart} = require("./src/flowerController");
 
 const flowers = readJSONFile("./data", "flowers.json");
 const cart = readJSONFile("./data", "customerCart.json")
@@ -33,6 +33,9 @@ function run() {
       updatedCart = addToCart(flowers, flower, cart);
       writeToFileCart = true
       break; 
+    case "totalCart":
+      inform(totalCart(cart));
+      break;
     case "update":
       updatedFlowers = update(flowers, flower, process.argv[4]);
       writeToFile = true;

@@ -10,7 +10,8 @@
     "update": "node index.js update",
     "destroy": "node index.js destroy",
     "score": "node index.js score",
-    "add": "node index.js addToCart"
+    "add": "node index.js addToCart",
+    "total": "node index.js totalCart"
   },
   "keywords": [],
   "author": "Haiyah Perez",
