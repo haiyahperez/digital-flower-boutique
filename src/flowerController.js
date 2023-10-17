@@ -1,8 +1,10 @@
 const { faker } = require("@faker-js/faker");
 const { nanoid } = require("nanoid");
-import chalk from 'chalk'; // ??? what is wrongggggg
+const chalk = require("chalk");
 
-const inform = console.log
+const error = chalk.red
+const warning = chalk.yellow
+const good = chalk.green
 
 
 function create(flowers, flowerName) {
@@ -10,8 +12,7 @@ function create(flowers, flowerName) {
     name: flowerName,
     id: nanoid(5),
     color: faker.color.human(),
-    priceInCents: faker.number.int({ max: 6500, min: 1500}),
-    inStock: faker.number.int({max: 135, min : 0})
+    priceInCents: faker.number.int({ max: 6500, min: 1500})
   }
   flowers.push(flower)
   return flowers;
@@ -28,10 +29,10 @@ function update(flowers, flowerId, updatedFlower) {
   if (index > -1) {
     flowers[index].id = flowerId;
     flowers[index].name = updatedFlower;
-    inform(chalk.green('Flower successfully updated!'));
+    console.log(good('Flower successfully updated!'));
     return flowers;
   } else {
-    inform(chalk.red('Sorry! Flower cannot be found.'));
+    console.log(error('Sorry! Flower cannot be found.'));
     return flowers;
   }
 }
@@ -39,10 +40,10 @@ function destroy(flowers, flowerId) {
   const index = flowers.findIndex((flower) => flower.id === flowerId);
   if (index > -1) {
     flowers.splice(index, 1);
-    inform(chalk.yellow('Flower successfully removed from collection.'));
+    console.log(warning('Flower is removed from collection.'));
     return flowers;
   } else {
-    inform(chalk.red('Sorry! Flower cannot be found.'));
+    console.log(error('Sorry! Flower cannot be found.'));
     return flowers;
   }
 }
@@ -51,7 +52,7 @@ function addToCart(flowers, flowerId, addCart) {
   if (flower) {
     addCart.push(flower) 
   } else {
-    inform (chalk.red("Sorry! This flower cannot be found."))
+    console.log(error("Sorry! Flower cannot be found."))
   }
   return addCart
 }
@@ -64,10 +65,10 @@ function deleteFromCart(cart, flowerId) {
   const index = cart.findIndex((flower) => flower.id === flowerId);
   if (index > -1) {
     cart.splice(index, 1);
-    inform(chalk.cyan('Flower successfully removed from cart.'));
+    console.log(warning('Flower is removed from cart.'));
     return cart;
   } else {
-    inform(chalk.red('Sorry! Flower cannot be found.'));
+    console.log(error('Sorry! Flower cannot be found.'));
     return cart;
   }
 }

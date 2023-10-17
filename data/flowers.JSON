@@ -4,24 +4,21 @@
     "id": "sleNd",
     "origin": "China",
     "color": "Red",
-    "priceInCents": 2500,
-    "inStock": 54
+    "priceInCents": 2500
   },
   {
     "name": "Lavender",
     "id": "dNwiO",
     "origin": "France",
     "color": "Purple",
-    "priceInCents": 1700,
-    "inStock": 78
+    "priceInCents": 1700
   },
   {
     "name": "Sunflower",
     "id": "nebUw",
     "origin": "Sun",
     "color": "Yellow",
-    "priceInCents": 4500,
-    "inStock": 52
+    "priceInCents": 4500
   },
   {
     "name": "Tulip",
@@ -30,14 +27,12 @@
     "color": [
       "Orange"
     ],
-    "priceInCents": 3000,
-    "inStock": 46
+    "priceInCents": 3000
   },
   {
     "name": "Orchid",
     "id": "LEXWO",
     "color": "lavender",
-    "priceInCents": 2386,
-    "inStock": 65
+    "priceInCents": 2386
   }
 ]

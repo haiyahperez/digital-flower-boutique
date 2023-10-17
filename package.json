@@ -9,7 +9,6 @@
     "show": "node index.js show",
     "update": "node index.js update",
     "delete": "node index.js deleteFromCart",
-    "score": "node index.js score",
     "add": "node index.js addToCart",
     "total": "node index.js totalCart",
     "destroy": "node index.js destroy",
@@ -20,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^8.1.0",
-    "chalk": "^5.3.0",
+    "chalk": "^4.1.2",
     "jest": "^29.7.0",
     "nanoid": "^3.3.6"
   }
